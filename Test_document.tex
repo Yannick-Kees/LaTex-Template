@@ -1,0 +1,114 @@
+\documentclass{yannick}
+
+	%%%%%%%%%%%%%%%%
+	% Titlepage %%%%
+	%%%%%%%%%%%%%%%%
+
+\title{LaTeX template for scripts } 
+\author{by Yannick Kees \\  {\small University Bonn}}
+\date{Summer 2021 }
+
+	
+	%%%%%%%%%%%%%%%%
+	% Pagestyle %%%%
+	%%%%%%%%%%%%%%%%	
+	
+\pagestyle{fancy}
+\rhead{ \includegraphics[scale=0.03]{unibonn.png}}
+\lhead{\textsc{Template file - Yannick Kees}}
+\cfoot{\thepage }
+
+
+\begin{document}
+
+\maketitle
+\newpage
+
+	\section{Examples for using this class}
+	% You can use 'dfn', 'satz', 'satzb', 'satzn', 'satznb', 'lem', 'lemn', 'lemnb', 'lemb', 'korollar'
+	% 'yannick' & 'problem'
+	\begin{dfn}
+		We define the \textbf{Laplace-operator} as
+			\begin{align*}
+				\Delta f = \sum_{i=1}^n \frac{\partial^2 f}{\partial x_i^2}
+			\end{align*}
+	\end{dfn}
+
+	\begin{satznb}{Fundamentallemma of calcus of variations}
+		Let $\Omega$ be an open subset of $\mathbb{R}^2$ and $\Phi:\Omega\to\mathbb{R}$ be lokal integrable. If for any function $v:\Omega\to\mathbb{R}$ with compact support the integral 
+		\begin{align*}
+			\int\limits_{\Omega} \Phi(x)v(x)\,\mathrm{d}x
+		\end{align*}
+		vanishes, then $\Phi(x) = 0$ nearly everywhere.
+	\end{satznb}
+
+	\begin{satzn}{First green identity}
+		{
+			Let $\omega\subset \mathbb{R}^n$ be compact and $\phi$ and $\psi$ are two functions on $\Omega$, where $\phi$ is once and $\psi$ is twice differentable. Then
+			\begin{align*}
+				\int\limits_\Omega \phi \Delta(\psi)+\nabla\phi\cdot\nabla\psi\,\mathrm{d}m^d = \int\limits_{\partial \Omega}\phi \frac{\partial \psi}{\partial n}\,\mathrm{d}m^{d-1}
+			\end{align*}
+		}
+		We use the gaußsche Integral formula to see that
+		\begin{align*}
+		 	\int\limits_{\partial \Omega}\phi \frac{\partial \psi}{\partial n}\,\mathrm{d}m^{d-1}&=  \int\limits_{\partial \Omega}(\phi\nabla\psi)\cdot \vec{n}\,\mathrm{d}m^{d-1}\\
+		 	&= \int\limits_\Omega \nabla\mathrm{div}(\phi\nabla\psi)\\
+		 	&= \int\limits_\Omega \phi \Delta(\psi)+\nabla\phi\cdot\nabla\psi\,\mathrm{d}m^d
+		\end{align*}
+	\end{satzn}
+	
+	\begin{korollar}
+		If $\mathcal{L}u\geq 0$ in $\Omega$, then $u$ obtains its minimum in the boundary of $\Omega$.
+	\end{korollar} 
+	
+	\begin{dfn}
+		A problem is called \textbf{well posed}\index{well posed} if there exists a solution, that is unique and depends continuously on its data.
+	\end{dfn}
+
+	\begin{problem}{Laplace-Equation}{
+		\begin{align*}
+			\Delta u(x)&=0 && \text{for }x\in\Omega \\
+			u(x)&=g(x) &&\text{for }x\in \Gamma
+		\end{align*}
+	}\end{problem}
+
+	\begin{lem}
+		{
+			 Stability implies $\|A^{-1}_h\|_{\infty }\leq C_s$ and this bound is independent of $h$.
+		}
+		Let $\vec{v}_h$ be the coefficient vector of $v_h$ and $\vec{w}:= A_h\vec{v}_h $ is the coefficient vector of $\mathcal{L}_hv_h$
+		\begin{align*}
+			\|A^{-1}_h\vec{w}_h\|_{\infty }=\|\vec{v}_h \|_{\infty}=\|v_h \|_{\Omega}\leq C_s \|\mathcal{L}_hv_h \|_{\overline{\Omega_h}} = C_s\|A_h\vec{v}_h \|_{\infty}=C_s\|\vec{w}_h \|_{\infty}
+		\end{align*}			 
+		Then $\|A^{-1}_h\|_{\infty }$ is the smallest number for which this inequality holds.
+	\end{lem}
+		 
+	\begin{yannick}{
+		In contrast to Dirichlet boundary conditions, Neumann boundary conditions are not directly built into the search space. Therefore they are also calles \textbf{natural boundary conditions}.
+	}\end{yannick}	
+	
+	\begin{lemn}{Comparison Principle}
+		{ 
+			If $\mathcal{L}u\leq\mathcal{L}v$ in $\Omega$ and $u\leq v$ in the boundary, then $u\leq v$ in $\overline{\Omega}$.
+		}
+		We use the maximum principle for
+		\begin{align*}
+			\mathcal{L}(v-u)\leq 0
+		\end{align*}
+		Then $(v-u)\leq 0$ in $\overline{\Omega}$.
+	\end{lemn}
+	
+	\begin{lemb}
+		Let $\mathcal{L}$ be uniformly elliptic. Then there exists a constant $c:=c(\Omega,\alpha)$, such that
+		\begin{align*}
+			|u(\vec{x})|\leq \max_{\vec{z}\in\Gamma}|u(\vec{z})|+c\cdot\sup_{\vec{z}\in\Omega}|(\mathcal{L}u )(\vec{z})|   &&\forall u\in C^2(\Omega)\cap C(\overline{\Omega}),\ \vec{x}\in\Omega
+		\end{align*}
+	\end{lemb}
+	
+	\begin{satz}
+		{
+	 		The space $C^\infty$ is dense in $H^m(\Omega)$.
+	 	}
+	 This theorem was proofen in 1964 by Meyers and Serrin. ($H=W$).
+	 \end{satz}
+\end{document}
