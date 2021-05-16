@@ -199,22 +199,16 @@
 	% Environments %
 	%%%%%%%%%%%%%%%%
 	
-	\newtcolorbox{sidebar}[2]{empty, 
+\newtcolorbox{sidebar}[2]{empty, 
 	title={#1  \ }, attach boxed title to top left, minipage boxed title,
-    	boxed title style= 	
-    		{empty,size=minimal,toprule=0pt,top=4pt,left=3mm,overlay={}},
-    	coltitle=#2,fonttitle=\bfseries,
-    	before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=3mm,right=0mm,top=-5pt,breakable,pad at 			break=0mm,
-       	before upper=\csname @totalleftmargin\endcsname0pt,
-    	% Handles box when it exists on one page only
-    	overlay unbroken={\draw[#2,line width=.5pt] ([xshift=-0pt]title.north west) -- 						([xshift=-0pt]frame.south west); },
-    	% Handles multipage box: first page
-    	overlay first={\draw[#2,line width=.5pt] ([xshift=-0pt]title.north west) -- 							([xshift=-0pt]frame.south west); },
-    	% Handles multipage box: middle page
-    	overlay middle={\draw[#2,line width=.5pt] ([xshift=-0pt]frame.north west) -- 							([xshift=-0pt]frame.south west); },
-   		 % Handles multipage box: last page
-  		  overlay last={\draw[#2,line width=.5pt] ([xshift=-0pt]frame.north west) -- 							([xshift=-0pt]frame.south west); },%
-   			 }	
+    	boxed title style={empty,size=minimal,toprule=0pt,top=4pt,left=3mm,overlay={}},
+    	coltitle=#2,fonttitle=\bfseries, before=\par\medskip\noindent,parbox=false,boxsep=0pt,left=3mm,right=0mm,top=-5pt,breakable,pad at break=0mm,
+       	before upper=\csname @totalleftmargin\endcsname0pt, 		
+    	overlay unbroken={\draw[#2,line width=.5pt] ([xshift=-0pt]title.north west) --  ([xshift=-0pt]frame.south west); },
+    	overlay first={\draw[#2,line width=.5pt] ([xshift=-0pt]title.north west) --  ([xshift=-0pt]frame.south west); },
+    	overlay middle={\draw[#2,line width=.5pt] ([xshift=-0pt]frame.north west) --  ([xshift=-0pt]frame.south west); },
+  		  overlay last={\draw[#2,line width=.5pt] ([xshift=-0pt]frame.north west) --  ([xshift=-0pt]frame.south west); },
+}		
 	
 
 	
